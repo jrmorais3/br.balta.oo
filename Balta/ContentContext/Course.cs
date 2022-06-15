@@ -11,7 +11,7 @@ namespace Balta.ContentContext
         public IList<Module> Modules { get; set; }
         public int DurationInMinutes { get; set; }
         public EContentLevel Level { get; set; }
-        public Course()
+        public Course(string title, string url) : base(title, url)
         {
             var Modules = new List<Module>();
             var Lectures = new List<Lecture>();

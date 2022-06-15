@@ -10,9 +10,11 @@ namespace Balta.ContentContext
         public string Title { get; set; }
         public string Url { get; set; }
 
-        public Content()
+        public Content(string title, string url)
         {
             var Id = new Guid();
+            Title = title;
+            Url = url;
         }
     }
 }

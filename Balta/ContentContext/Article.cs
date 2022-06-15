@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Balta.ContentContext
 {
-    public class Article : Content
+    public class Article : Content 
     {
-        public Article()
+        public Article(string title, string url) : base(title, url)
         {
 
         }
