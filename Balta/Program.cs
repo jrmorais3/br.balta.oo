@@ -1,6 +1,7 @@
 ﻿using Balta.ContentContext;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Balta
 {
@@ -8,18 +9,41 @@ namespace Balta
     {
         static void Main(string[] args)
         {
-            var articles = new List<Article>();
-            articles.Add(new Article("texto", "texto"));
+            var courses = new List<Course>();
+            var courseCsharp = new Course("curso de C#", "cursodeC#.com.br");
+            var courseOOP = new Course("curso de orientação a objetos", "cursoOOP.com.br");
+            var courseDotnet = new Course("curso de dotnet", "cursodotnet.com.br");
+            courses.Add(courseCsharp); 
+            courses.Add(courseOOP); 
+            courses.Add(courseDotnet);
 
-            foreach (var article in articles)
+            
+            var careers = new List<Career>();
+            var careerDotnet = new Career("careerDotnet", "careerDotnet.com.br");
+            var DotnetItem = new CareerItem(3, "Especialista .NET",
+                "Formação .net", courseDotnet);
+            var CSharpItem = new CareerItem(1, "Especialista C#",
+                "Formação .net", courseCsharp);
+            var OOPItem = new CareerItem(2, "Orientação a objetos",
+                "Formação .net", null);
+
+            careerDotnet.Items.Add(CSharpItem);
+            careerDotnet.Items.Add(OOPItem);
+            careerDotnet.Items.Add(DotnetItem);
+
+            careers.Add(careerDotnet);
+
+            foreach (var career in careers)
             {
-                Console.WriteLine(article.Id);
-                Console.WriteLine(article.Title);
-                Console.WriteLine(article.Url);
-                Console.ReadKey();
+                Console.WriteLine(career.Title);
+
+                foreach (var item in career.Items.OrderBy(x => x.Order))
+                {
+                    Console.WriteLine($"{item.Order} - {item.Title}");
+                    Console.WriteLine(item.Course?.Title);
+                }
             }
-
-
         }
     }
 }
+ 
