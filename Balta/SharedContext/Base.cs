@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Balta.ContentContext
+namespace Balta.SharedContext
 {
     public abstract class Base : Notifiable
     {
